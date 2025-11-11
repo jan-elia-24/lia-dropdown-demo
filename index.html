@@ -1,15 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LIA - Jan's Solution</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .accordion {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .accordion li {
+            border: 1.5px solid rgba(128, 128, 128, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 15px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), 0 1.5px 4px rgba(0, 0, 0, 0.08);
+            background: white;
+        }
+
+        .accordion label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+            background: #f7f7f7;
+            transition: background 0.3s ease;
+            font-family: Arial, sans-serif;
+            color: #1e3a8a;
+        }
+
+        .accordion label:hover {
+            background: #eeeeee;
+        }
+
+        label::after {
+            content: "+";
+            font-size: 24px;
+            font-weight: normal;
+            transition: transform 0.3s ease;
+            font-family: Arial, sans-serif;
+        }
+
+        .accordion input[type="checkbox"]:checked+label::after {
+            content: "–";
+        }
+
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        .content {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            padding: 0 20px;
+            transition: max-height 0.5s ease, opacity 0.4s ease, padding 0.3s;
+            font-family: Arial, sans-serif;
+            color: #1e3a8a;
+        }
+
+        .content * {
+            color: #1e3a8a;
+        }
+
+        .accordion input[type="checkbox"]:checked~.content {
+            max-height: 2000px;
+            opacity: 1;
+            padding: 20px;
+        }
+
+        .content p {
+            font-family: Arial, sans-serif;
+            color: #1e3a8a;
+        }
+
+        .progress-bar {
+            width: 100%;
+            max-width: 300px;
+            height: 13px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #4caf50;
+            border-radius: 5px;
+            transition: width 0.5s ease;
+        }
+
+        .container-v,
+        .container-h {
+            display: flex;
+            gap: 30px;
+            padding: 10px 0;
+        }
+
+        .container-v>div,
+        .container-h>div {
+            flex: 1;
+        }
+
+        .image-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .small-image {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .large-image {
+            width: 100%;
+            height: auto;
+            max-width: 2000px;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+
+            .container-v,
+            .container-h {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .image-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .accordion label {
+                font-size: 18px;
+                padding: 12px 15px;
+            }
+
+            .content {
+                padding: 0 15px;
+            }
+
+            .accordion input[type="checkbox"]:checked~.content {
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
+
 <body>
     <ul class="accordion">
         <li>
             <input type="checkbox" name="accordion" id="details" />
-            <label for="details">a short sentence of text</label>
+            <label for="details">short sentence of text</label>
             <div class="content">
                 <p>"Great achievements begin with the right foundation."</p>
             </div>
@@ -67,6 +236,7 @@
             </div>
         </li>
     </ul>
-    
+
 </body>
+
 </html>
